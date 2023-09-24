@@ -7,7 +7,7 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cors({
-	origin: "*"
+	origin: ["http://localhost:59817", "*"]
 }))
 
 const userRouter = require("./routes/User")
