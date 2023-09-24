@@ -46,7 +46,7 @@ const signInUser = async (req, res) => {
 				return res.json({
 					error: false,
 					message: "Logged In Successfully!",
-					token: token
+					user: { ...user, token }
 				})
 			} else {
 				return res.json({
