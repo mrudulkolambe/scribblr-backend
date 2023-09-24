@@ -63,4 +63,27 @@ const signInUser = async (req, res) => {
 	}
 }
 
-module.exports = { createUser, signInUser };
+const userProfile = async (req, res) => {
+	try {
+		const user = await User.findOne({ _id: req.user._id }, { password: 0 });
+		if (!user) {
+			return res.json({
+				error: true,
+				message: "User not found!"
+			})
+		} else {
+			return res.json({
+				error: false,
+				message: "Data fetched successfully!",
+				user: user
+			})
+		}
+	} catch (error) {
+		return res.json({
+			error: true,
+			message: "Something went wrong!"
+		})
+	}
+}
+
+module.exports = { createUser, signInUser, userProfile };
