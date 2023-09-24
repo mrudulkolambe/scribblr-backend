@@ -9,4 +9,6 @@ router.post("/signin", signInUser);
 
 router.get("/profile", VerifyUserToken, userProfile);
 
+router.patch("/update", VerifyUserToken, userProfile);
+
 module.exports = router

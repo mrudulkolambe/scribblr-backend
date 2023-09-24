@@ -86,4 +86,27 @@ const userProfile = async (req, res) => {
 	}
 }
 
-module.exports = { createUser, signInUser, userProfile };
+const updateProfile = async (req, res) => {
+	try {
+		const user = await User.findOneAndUpdate({ _id: req.user._id }, { ...req.body }, { returnOriginal: false });
+		if (!user) {
+			return res.json({
+				error: true,
+				message: "User not found!"
+			})
+		} else {
+			return res.json({
+				error: false,
+				message: "Data updated successfully!",
+				user: user
+			})
+		}
+	} catch (error) {
+		return res.json({
+			error: true,
+			message: "Something went wrong!"
+		})
+	}
+}
+
+module.exports = { createUser, signInUser, userProfile, updateProfile };
