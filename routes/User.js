@@ -7,6 +7,6 @@ router.post("/create", createUser);
 
 router.post("/signin", signInUser);
 
-router.post("/profile", VerifyUserToken, userProfile);
+router.get("/profile", VerifyUserToken, userProfile);
 
 module.exports = router
