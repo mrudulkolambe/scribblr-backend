@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
 	name: {
 		type: String,
+		default: ""
 	},
 	username: {
 		type: String,
@@ -20,6 +21,7 @@ const UserSchema = new mongoose.Schema({
 	},
 	photoURL: {
 		type: String,
+		default: ""
 	},
 	followers: {
 		type: [mongoose.SchemaTypes.ObjectId],
@@ -31,21 +33,27 @@ const UserSchema = new mongoose.Schema({
 	},
 	description: {
 		type: String,
+		default: ""
 	},
 	whatsapp: {
 		type: String,
+		default: ""
 	},
 	facebook: {
 		type: String,
+		default: ""
 	},
 	instagram: {
 		type: String,
+		default: ""
 	},
 	twitter: {
 		type: String,
+		default: ""
 	},
 	website: {
 		type: String,
+		default: ""
 	},
 	joined: {
 		type: Number,
