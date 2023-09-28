@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 dotenv.config();
 
 app.use(cors({
-	origin: ["http://localhost:59817", "*"]
+	origin: ["http://localhost:59591", "*"]
 }))
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }))

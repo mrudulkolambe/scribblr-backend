@@ -43,10 +43,13 @@ const signInUser = async (req, res) => {
 					_id: user._id,
 					role: "user"
 				}, process.env.JWT_SECRET);
+				const data = { ...user.toObject(), id: user._id, token: token }
+				delete data._id
+				delete data.__v
 				return res.json({
 					error: false,
 					message: "Logged In Successfully!",
-					user: { ...user.toObject(), token }
+					...data
 				})
 			} else {
 				return res.json({
@@ -72,10 +75,11 @@ const userProfile = async (req, res) => {
 				message: "User not found!"
 			})
 		} else {
+			delete user._id;
 			return res.json({
 				error: false,
 				message: "Data fetched successfully!",
-				user: user
+				user: { ...user.toObject(), id: user._id }
 			})
 		}
 	} catch (error) {

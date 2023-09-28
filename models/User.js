@@ -23,14 +23,14 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		default: ""
 	},
-	followers: {
-		type: [mongoose.SchemaTypes.ObjectId],
-		default: [],
-	},
-	following: {
-		type: [mongoose.SchemaTypes.ObjectId],
-		default: [],
-	},
+	// followers: {
+	// 	type: [mongoose.SchemaTypes.ObjectId],
+	// 	default: [],
+	// },
+	// following: {
+	// 	type: [mongoose.SchemaTypes.ObjectId],
+	// 	default: [],
+	// },
 	description: {
 		type: String,
 		default: ""
