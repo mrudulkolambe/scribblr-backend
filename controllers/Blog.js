@@ -19,23 +19,25 @@ const createBlog = async (req, res) => {
 
 const getAllBlogs = async (req, res) => {
 	try {
-		const blogs = await Blog.find({}).populate('topic').populate("user", {name: 1, username: 1, photoURL: 1});
+		const blogs = await Blog.find({}).populate('topic').populate("user", { password: 0, });
 		if (!blogs) {
 			return res.json({
 				error: true,
-				message: "Something went wrong!"
+				message: "Something went wrong",
+				blogs: []
 			})
 		} else {
 			return res.json({
-				error: true,
-				message: "Blogs fetched successfully!",
-				blog: blogs
+				error: false,
+				message: "Blogs fetched Successfully!",
+				blogs: blogs
 			})
 		}
 	} catch (error) {
 		return res.json({
 			error: true,
-			message: "Something went wrong!"
+			message: "Something went wrong",
+			blogs: []
 		})
 	}
 }

@@ -43,25 +43,24 @@ const signInUser = async (req, res) => {
 					_id: user._id,
 					role: "user"
 				}, process.env.JWT_SECRET);
-				const data = { ...user.toObject(), id: user._id, token: token }
-				delete data._id
-				delete data.__v
 				return res.json({
 					error: false,
 					message: "Logged In Successfully!",
-					...data
+					token: token
 				})
 			} else {
 				return res.json({
 					error: true,
-					message: "Invalid Credentials!"
+					message: "Invalid Credentials!",
+					token: ""
 				})
 			}
 		}
 	} catch (error) {
 		return res.json({
 			error: true,
-			message: "Something went wrong!"
+			message: "Something went wrong!",
+			token: ""
 		})
 	}
 }
